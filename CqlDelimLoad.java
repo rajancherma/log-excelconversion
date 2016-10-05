@@ -460,7 +460,7 @@ public class CqlDelimLoad {
 				;
 		graphCluster = DseCluster.builder()
 				.addContactPoint(host)
-				.withGraphOptions(new GraphOptions().setGraphName("sgslitegraph"))
+				.withGraphOptions(new GraphOptions().setGraphName("sysgraph"))
 				.build();
 		if (graphCluster != null){
 			System.out.println("creating the graph cluster session:");
@@ -685,7 +685,7 @@ public class CqlDelimLoad {
 			CertificateException, KeyManagementException {
 		CqlDelimLoad cdl = new CqlDelimLoad();
 		Properties prop = new Properties();
-		try (InputStream input = new FileInputStream("C:\\Users\\Test\\test.properties")) {
+		try (InputStream input = new FileInputStream("/home/verizon/Downloads/test.properties")) {
 			prop.load(input);
 			boolean success = cdl.run(prop);
 			if (success) {
