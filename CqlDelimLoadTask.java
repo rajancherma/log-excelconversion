@@ -300,6 +300,10 @@ class CqlDelimLoadTask implements Callable<Long> {
 		}
 		if ((batchSize > 1) && (batch.size() > 0)) {
 			resultSetFuture = session.executeAsync(batch);
+			for (SimpleGraphStatement graphStatement : simpleGraphStatements){
+			 graphSession.executeGraphAsync(graphStatement);
+			}
+			simpleGraphStatements = null;
 			if (!fm.add(resultSetFuture, fline)) {
 				cleanup(false);
 				return -2;
